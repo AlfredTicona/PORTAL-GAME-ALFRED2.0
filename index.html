@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portal Gamer - Kevin Alfred Ticona Nina</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="bootstrap.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Reset y base */
+    body {
+      margin: 0; 
+      background: #0a0a0a; 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #00ffff;
+      user-select: none;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      grid-template-rows: 120px 220px 160px 100px;
+      gap: 12px;
+      height: 100vh;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+
+    /* Áreas del grid */
+    .header {
+      grid-column: 1 / 4;
+      grid-row: 1;
+      background: url('https://wallpapers.com/images/hd/tekken-8-hd-game-banner-xhgxm5c6fgqq8z8z.jpg') center center/cover no-repeat;
+      border-radius: 15px;
+      border: 3px solid #00ffff;
+      box-shadow: 0 0 30px #00ffffcc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      font-weight: 900;
+      text-shadow: 2px 2px 10px #000;
+      color: #00ffff;
+      transition: box-shadow 0.3s ease;
+    }
+    .header:hover {
+      box-shadow: 0 0 50px #00ffffff;
+      cursor: default;
+    }
+
+    .left {
+      grid-column: 1;
+      grid-row: 2 / 4;
+      background: url('https://wallpapers.com/images/hd/final-fantasy-vii-rebirth-cloud-vs-sephiroth-3q5xvcm4bf6mxptv.jpg') center center/cover no-repeat;
+      border-radius: 15px;
+      border: 3px solid #00ffff;
+      box-shadow: 0 0 25px #00ffffcc;
+      color: #ccffff;
+      padding: 20px;
+      font-weight: 600;
+      overflow-y: auto;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .left:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 40px #00ffffdd;
+      cursor: pointer;
+    }
+    .left h3 {
+      margin-top: 0;
+      text-shadow: 1px 1px 4px #000;
+    }
+    .left ul {
+      list-style: none;
+      padding-left: 10px;
+      margin: 0;
+    }
+    .left ul li {
+      padding: 6px 0;
+      border-bottom: 1px solid #00ffff55;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+    .left ul li:hover {
+      color: #fff;
+      text-shadow: 0 0 10px #00ffffdd;
+    }
+
+    .right {
+      grid-column: 3;
+      grid-row: 2 / 3;
+      background: url('https://wallpapers.com/images/hd/mortal-kombat-11-fire-background-l4vfbss4cy9vnnh5.jpg') center center/cover no-repeat;
+      border-radius: 15px;
+      border: 3px solid #00ffff;
+      box-shadow: 0 0 25px #00ffffcc;
+      color: #ccffff;
+      padding: 20px;
+      font-weight: 600;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .right:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 40px #00ffffdd;
+      cursor: pointer;
+    }
+    .right h3 {
+      margin-top: 0;
+      text-shadow: 1px 1px 4px #000;
+    }
+    .right ul {
+      list-style: none;
+      padding-left: 10px;
+      margin: 0;
+    }
+    .right ul li {
+      padding: 6px 0;
+      border-bottom: 1px solid #00ffff55;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+    .right ul li:hover {
+      color: #fff;
+      text-shadow: 0 0 10px #00ffffdd;
+    }
+
+    .nav {
+      grid-column: 2;
+      grid-row: 2;
+      background: url('https://wallpaperaccess.com/full/1098323.jpg') center center/cover no-repeat;
+      border-radius: 15px;
+      border: 3px solid #00ffff;
+      box-shadow: 0 0 25px #00ffffcc;
+      padding: 20px;
+      font-weight: 700;
+      color: #00ffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      user-select: none;
+      transition: box-shadow 0.3s ease;
+    }
+    .nav ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+    .nav ul li {
+      margin: 10px 0;
+      font-size: 1.3rem;
+      padding: 8px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      user-select: none;
+    }
+    .nav ul li:hover {
+      background: #00ffff22;
+      box-shadow: 0 0 15px #00ffff88;
+      transform: scale(1.08);
+      color: #fff;
+    }
+    .nav ul li i {
+      color: #00ffffcc;
+    }
+
+    .main {
+      grid-column: 2 / 4;
+      grid-row: 3;
+      background: url('https://wallpapers.com/images/hd/blue-futuristic-gaming-arena-5mlofkwhvofbo7on.jpg') center center/cover no-repeat;
+      border-radius: 15px;
+      border: 3px solid #00ffff;
+      box-shadow: 0 0 30px #00ffffcc;
+      color: #ccffff;
+      padding: 20px;
+      overflow-y: auto;
+      font-weight: 600;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      user-select: none;
+      transition: box-shadow 0.3s ease;
+    }
+    .main:hover {
+      box-shadow: 0 0 50px #00ffffdd;
+    }
+
+    .juego {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      border: 2px solid #00ffffaa;
+      width: 260px;
+      box-shadow: 0 0 10px #00ffff88;
+      padding: 10px;
+      cursor: pointer;
+      transition:
+        box-shadow 0.4s ease,
+        transform 0.3s ease;
+      user-select: none;
+    }
+    .juego:hover {
+      box-shadow: 0 0 35px #00ffffee;
+      transform: scale(1.1);
+    }
+    .juego img {
+      width: 100%;
+      border-radius: 12px;
+      border: 2px solid #00ffffaa;
+      margin-bottom: 8px;
+      transition: transform 0.3s ease;
+      user-select: none;
+    }
+    .juego:hover img {
+      transform: scale(1.05);
+    }
+    .juego h4 {
+      margin: 0 0 8px 0;
+      color: #00ffff;
+      font-weight: 900;
+      text-shadow: 1px 1px 4px #000;
+      user-select: none;
+    }
+    .juego p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #ccffffdd;
+      user-select: none;
+    }
+
+    .footer {
+      grid-column: 1 / 4;
+      grid-row: 4;
+      background: url('https://wallpapercave.com/wp/wp1917125.jpg') center center/cover no-repeat;
+      border-radius: 15px;
+      border: 3px solid #00ffff;
+      box-shadow: 0 0 20px #00ffffcc;
+      color: #00ffffcc;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      transition: box-shadow 0.3s ease;
+    }
+    .footer:hover {
+      box-shadow: 0 0 40px #00ffffee;
+      cursor: default;
+    }
+
+    /* Scrollbar personalizado para main, left */
+    .main::-webkit-scrollbar,
+    .left::-webkit-scrollbar {
+      width: 8px;
+    }
+    .main::-webkit-scrollbar-thumb,
+    .left::-webkit-scrollbar-thumb {
+      background-color: #00ffffaa;
+      border-radius: 8px;
+    }
+    .main::-webkit-scrollbar-track,
+    .left::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .grid-container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 120px 160px 160px 160px 100px;
+        grid-template-areas:
+          "header header"
+          "left right"
+          "nav nav"
+          "main main"
+          "footer footer";
+        height: auto;
+      }
+      .left {
+        grid-column: 1 / 2;
+        grid-row: 2;
+      }
+      .right {
+        grid-column: 2 / 3;
+        grid-row: 2;
+      }
+      .nav {
+        grid-column: 1 / 3;
+        grid-row: 3;
+      }
+      .main {
+        grid-column: 1 / 3;
+        grid-row: 4;
+        justify-content: center;
+      }
+      .footer {
+        grid-column: 1 / 3;
+        grid-row: 5;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 100px 140px 140px 140px 100px 100px;
+        grid-template-areas:
+          "header"
+          "left"
+          "right"
+          "nav"
+          "main"
+          "footer";
+        height: auto;
+      }
+      .left, .right, .nav, .main, .footer {
+        border-radius: 12px;
+      }
+      .left, .right, .nav, .main {
+        padding: 12px;
+      }
+      .main {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grid-container">
+    <header class="header">
+      🎮 Portal Gamer - Kevin Alfred Ticona Nina
+    </header>
+
+    <section class="left" tabindex="0" aria-label="Listado de juegos populares">
+      <h3>🔥 Juegos Populares</h3>
+      <ul>
+        <li>Tekken 8</li>
+        <li>Mortal Kombat 1 Ultimate</li>
+        <li>Sparking Zero</li>
+        <li>Final Fantasy VII Rebirth</li>
+        <li>Street Fighter 6</li>
+        <li>Cyberpunk 2077</li>
+      </ul>
+    </section>
+
+    <section class="right" tabindex="0" aria-label="Novedades de videojuegos">
+      <h3>⚡ Novedades</h3>
+      <ul>
+        <li>Eventos eSports 2025</li>
+        <li>Nuevo DLC Tekken 8</li>
+        <li>Mortal Kombat en Cine</li>
+        <li>Street Fighter 6 Actualizaciones</li>
+      </ul>
+    </section>
+
+    <nav class="nav" tabindex="0" aria-label="Menú principal">
+      <ul>
+        <li><i class="fa-solid fa-house"></i> Inicio</li>
+        <li><i class="fa-solid fa-gamepad"></i> Juegos</li>
+        <li><i class="fa-solid fa-fire"></i> Top del Mes</li>
+        <li><i class="fa-solid fa-envelope"></i> Contacto</li>
+      </ul>
+    </nav>
+
+    <main class="main" tabindex="0" aria-label="Detalle de juegos">
+      <article class="juego" tabindex="0" aria-label="Juego Tekken 8">
+        <h4>Tekken 8</h4>
+        <img src="https://upload.wikimedia.org/wikipedia/en/2/28/Tekken_8_cover.jpg" alt="Portada Tekken 8" />
+        <p>El torneo del puño de hierro regresa con gráficos de nueva generación y combates épicos.</p>
+      </article>
+
+      <article class="juego" tabindex="0" aria-label="Juego Mortal Kombat 1 Ultimate">
+        <h4>Mortal Kombat 1 Ultimate</h4>
+        <img src="https://upload.wikimedia.org/wikipedia/en/e/e1/Mortal_Kombat_1_cover_art.jpg" alt="Portada Mortal Kombat 1 Ultimate" />
+        <p>La experiencia definitiva de Mortal Kombat con todos los personajes y modos.</p>
+      </article>
+
+      <article class="juego" tabindex="0" aria-label="Juego Sparking Zero">
+        <h4>Sparking Zero</h4>
+        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1697700/header.jpg" alt="Portada Sparking Zero" />
+        <p>Un juego de lucha rápido y dinámico con personajes únicos y una comunidad activa.</p>
+      </article>
+
+      <article class="juego" tabindex="0" aria-label="Juego Final Fantasy VII Rebirth">
+        <h4>Final Fantasy VII Rebirth</h4>
+        <img src="https://cdn1.epicgames.com/offer/7a82e76d3ff646ffba4de47a4912b1ac/EGS_FinalFantasyVIIRemakeFinalChapterSquareEnix_S2_2560x1440-4bf4a252226af2e3ca6f6b8d25c60a99" alt="Portada Final Fantasy VII Rebirth" />
+        <p>Continúa la saga con una historia profunda y gráficos impresionantes.</p>
+      </article>
+
+      <article class="juego" tabindex="0" aria-label="Juego Street Fighter 6">
+        <h4>Street Fighter 6</h4>
+        <img src="https://upload.wikimedia.org/wikipedia/en/d/d6/Street_Fighter_6_cover_art.jpg" alt="Portada Street Fighter 6" />
+        <p>La última entrega de la icónica saga de lucha con nuevos personajes y modos.</p>
+      </article>
+
+      <article class="juego" tabindex="0" aria-label="Juego Cyberpunk 2077">
+        <h4>Cyberpunk 2077</h4>
+        <img src="https://upload.wikimedia.org/wikipedia/en/9/9f/Cyberpunk_2077_box_art.jpg" alt="Portada Cyberpunk 2077" />
+        <p>Un RPG futurista de mundo abierto con una historia cautivadora y mundo vibrante.</p>
+      </article>
+    </main>
+
+    <footer class="footer">
+      &copy; 2025 Kevin Alfred Ticona Nina - Portal Gamer
+    </footer>
+  </div>
+
+  <script src="jquery.js"></script>
+  <script src="bootstrap.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
